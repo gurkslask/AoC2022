@@ -12,8 +12,14 @@ def main(data) -> str:
             elves.append(tmp)
             tmp = 0
 
+    top = []
+    for i in range(3):
+        print(max(elves))
+        top.append(max(elves))
+        elves.remove(max(elves))
 
-    return str(max(elves))
+
+    return str(sum(top))
 
 
 def getdata(path):
