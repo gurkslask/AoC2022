@@ -17,9 +17,7 @@ fn main(){
             t = 0;
         }
     }
-    let ll = a.len();
-    println!("{ll}");
-    for ii in &a { println!("{ii}")};
-    let m = a.iter().max().unwrap();
+    a.sort();
+    let m = a[a.len() -1] + a[a.len() - 2] + a[a.len() - 3];
     println!("{m}")
 }
