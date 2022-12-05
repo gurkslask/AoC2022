@@ -2,6 +2,8 @@ import re
 import os
 
 
+
+
 def main(data):
     pair = [i.split(',') for i in data]
     # print(pair)
@@ -42,6 +44,36 @@ def main(data):
     return str(res)
 
 
+def mainadv(data):
+    pair = [i.split(',') for i in data]
+    # print(pair)
+    pp = []
+
+    for p in pair:
+        plist = []
+        for e in p:
+            elist = []
+            s = e.split('-')
+            for i in range(int(s[0]), int(s[1]) + 1):
+                elist.append(i)
+                # print(i)
+            plist.append(elist)
+        pp.append(plist)
+
+    res = 0
+    for pair in pp:
+        overlap = False
+        # print("First")
+        for first_elf in pair[0]:
+            # print(first_elf)
+            if first_elf in pair[1]:
+                overlap = True
+        if overlap:
+            res += 1
+
+    return str(res)
+
+
 def getdata(path):
     with open(path) as f:
         data = f.readlines()
@@ -59,4 +91,6 @@ if __name__ == '__main__':
     testdata = getdata('./testinput.txt')
 
     print("Test: " + main(testdata))
-    print("Test: " + main(data))
+    print("Main: " + main(data))
+    print("Test advanced: " + mainadv(testdata))
+    print("Main advanced: " + mainadv(data))
