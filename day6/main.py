@@ -8,10 +8,10 @@ def main(data):
     for k, v in enumerate(data):
         # print(f"key: {k}, value{v}")
         done = True
-        m = max(0, k - 4)
+        m = max(0, k - 14)
         # print(data[m:k])
         s = set(data[m:k])
-        if len(s) == 4:
+        if len(s) == 14:
             done = True
             res = k
             break
