@@ -57,6 +57,109 @@ def main(data):
             if col: res+=1
     return res
 
+def mainadv(data):
+    trees = [[f for f in c]for c in data]
+    vis = [[0 for f in c]for c in data]
+    viss = [[[] for f in c]for c in data]
+    lt = len(trees)
+    # [rad][kolumn]
+    for row in range(lt):
+        for col in range(lt):
+            l = []
+            l.append(checkUp(trees, row, col))
+            l.append(checkDown(trees, row, col))
+            l.append(checkRight(trees, row, col))
+            l.append(checkLeft(trees, row, col))
+            vis[row][col] = l[0] * l[1] * l[2] * l[3]
+            viss[row][col].append(l)
+
+
+    """for row in range(lt):
+        print("--------")
+        print(viss[row])
+    for row in range(lt):
+        print("--------")
+        print(vis[row])"""
+    m = []
+    for i in range(lt):
+        for j in range(lt):
+            m.append(vis[i][j])
+    return max(m)
+
+            
+
+def checkUp(trees, row, col):
+    height = trees[row][col]
+    nrow = row - 1
+    lt = len(trees)
+    res = 0
+    done = False
+    while not done:
+        if 0 <= nrow < lt:
+            new_tree = trees[nrow][col]
+            res += 1
+            if new_tree >= height and not done:
+                done = True
+            elif not done:
+                nrow -= 1
+        else:
+            done = True
+    return res
+def checkDown(trees, row, col):
+    height = trees[row][col]
+    nrow = row + 1
+    lt = len(trees)
+    res = 0
+    done = False
+    while not done:
+        if 0 <= nrow < lt:
+            new_tree = trees[nrow][col]
+            res += 1
+            if new_tree >= height and not done:
+                done = True
+            elif not done:
+                nrow += 1
+        else:
+            done = True
+    return res
+def checkLeft(trees, row, col):
+    height = trees[row][col]
+    ncol = col + 1
+    lt = len(trees)
+    res = 0
+    done = False
+    while not done:
+        if 0 <= ncol < lt:
+            new_tree = trees[row][ncol]
+            res += 1
+            if new_tree >= height and not done:
+                done = True
+            elif not done:
+                ncol += 1
+        else:
+            done = True
+    return res
+def checkRight(trees, row, col):
+    height = trees[row][col]
+    ncol = col - 1
+    lt = len(trees)
+    res = 0
+    done = False
+    while not done:
+        if 0 <= ncol < lt:
+            new_tree = trees[row][ncol]
+            res += 1
+            if new_tree >= height and not done:
+                done = True
+            elif not done:
+                ncol -= 1
+        else:
+            done = True
+    return res
+
+
+
+
 
 def getdata(path):
     with open(path) as f:
@@ -75,3 +178,5 @@ if __name__ == '__main__':
     testdata = getdata('./testinput.txt')
     print(main(testdata))
     print(main(data))
+    print(mainadv(testdata))
+    print(mainadv(data))
