@@ -18,6 +18,7 @@ fn main(){
         }
     }
     a.sort();
+    
     let m = a[a.len() -1] + a[a.len() - 2] + a[a.len() - 3];
     println!("{m}")
 }

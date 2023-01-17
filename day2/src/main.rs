@@ -13,9 +13,9 @@ fn main() {
         ("Z", 3),
     ]);
     let outcomes = HashMap::from([
-        ("A", HashMap::from([ ("X", 3), ("Y", 6), ("Z", 0)  ])),
-        ("B", HashMap::from([ ("X", 0), ("Y", 3), ("Z", 6)  ])),
-        ("C", HashMap::from([ ("X", 6), ("Y", 0), ("Z", 3)  ])),
+        ("A", HashMap::from([("X", 3), ("Y", 6), ("Z", 0)])),
+        ("B", HashMap::from([("X", 0), ("Y", 3), ("Z", 6)])),
+        ("C", HashMap::from([("X", 6), ("Y", 0), ("Z", 3)])),
     ]);
     let mut score = 0;
     for row in contents{
